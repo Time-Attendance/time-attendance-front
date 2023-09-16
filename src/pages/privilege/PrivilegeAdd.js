@@ -27,6 +27,7 @@ import {
   DialogTitle,
   DialogActions,
   DialogContentText,
+  LinearProgress,
 } from '@mui/material';
 // components
 import PersonIcon from '@mui/icons-material/Person';
@@ -113,6 +114,9 @@ function applySortFilter(array, comparator, query) {
 }
 
 export default function PrivilegeAdd() {
+  // 로딩 상태를 true로 설정
+  const [loading, setLoading] = useState(true);
+
   const { user } = useAuthState();
   // 회원 목록
   const [users, setUsers] = useState([]);
@@ -122,6 +126,7 @@ export default function PrivilegeAdd() {
     const filteredData = res.data.filter((userData) => userData.userId !== user.userId);
     setUsers(filteredData);
     setFilteredModalUsers(filteredData);
+    setLoading(false); // 서버에서 데이터 응답 받았으니 로딩 해제
   };
 
   useEffect(() => {
@@ -299,6 +304,17 @@ export default function PrivilegeAdd() {
   };
   // ... (필요한 함수들과 상태들을 PrivilegeModal 컴포넌트로 옮길 수 있습니다)
 
+  // 로딩 중일 때
+  if (loading)
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="80vh">
+        <Box width="50%">
+          <LinearProgress color="primary" />
+        </Box>
+      </Box>
+    );
+
+  // 로딩 완료되면 실제 컨텐츠 표시
   return (
     <>
       <Helmet>
