@@ -3,8 +3,10 @@ import { Outlet } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 // components
 import Logo from '../../components/logo';
+import { Stack } from '@mui/material';
 
 // ----------------------------------------------------------------------
+// const url = `${process.env.PUBLIC_URL}/assets/logo2.svg`;
 
 const StyledHeader = styled('header')(({ theme }) => ({
   top: 0,
@@ -24,7 +26,9 @@ export default function SimpleLayout() {
   return (
     <>
       <StyledHeader>
-        <Logo />
+        <Stack direction="row" alignItems="center" justifyContent="center">
+          <Logo />
+        </Stack>
       </StyledHeader>
 
       <Outlet />

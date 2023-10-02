@@ -22,28 +22,23 @@ export default function Page404() {
   return (
     <>
       <Helmet>
-        <title> 404 Page Not Found | Minimal UI </title>
+        <title> 404 Not Found </title>
       </Helmet>
 
       <Container>
         <StyledContent sx={{ textAlign: 'center', alignItems: 'center' }}>
+          <Box component="img" src="/assets/illustrations/404.png" sx={{ height: 200, mx: 'auto', my: 5 }} />
+
           <Typography variant="h3" paragraph>
-            Sorry, page not found!
+            해당 페이지를 찾지 못했습니다 😅
           </Typography>
-
-          <Typography sx={{ color: 'text.secondary' }}>
-            Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be sure to check your
-            spelling.
+          <Typography variant="subtitle1" paragraph>
+            주소가 잘못되었거나 더 이상 제공되지 않는 페이지입니다.
           </Typography>
+          {/* TODO: 다른 페이지 추천 링크 */}
 
-          <Box
-            component="img"
-            src="/assets/illustrations/illustration_404.svg"
-            sx={{ height: 260, mx: 'auto', my: { xs: 5, sm: 10 } }}
-          />
-
-          <Button to="/" size="large" variant="contained" component={RouterLink}>
-            Go to Home
+          <Button to="/" size="medium" variant="contained" color="info" component={RouterLink}>
+            홈으로
           </Button>
         </StyledContent>
       </Container>
